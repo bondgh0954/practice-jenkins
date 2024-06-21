@@ -34,7 +34,7 @@ pipeline{
         script{
           buildImage "nanaot/java-app:$IMAGE_NAME"
           dockerLogin()
-          pushImage "nanaot/java-app:$IMAGE-NAME"
+          pushImage "nanaot/java-app:$IMAGE_NAME"
         }
       }
     }
