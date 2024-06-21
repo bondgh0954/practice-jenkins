@@ -49,6 +49,17 @@ pipeline{
         }
       }
     }
+    stage('commit changes'){
+      steps{
+        script{
+          echo 'commiting changes back to git repository'
+          sh 'git remote set-url origin https://${PASS}:${USER}@github.com:bondgh0954/practice-jenkins.git'
+          sh 'git add .'
+          sh 'git commit -m "commiting changes"'
+          sh "git push origin HEAD:'$versionIncrement'"
+        }
+      }
+    }
   }
 
 }
