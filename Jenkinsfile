@@ -18,12 +18,12 @@ pipeline{
     }
   }
   stage('building image'){
-    steps[
+    steps{
       script{
         buildImage 'nanaot/java-app:45.2'
         dockerLogin()
         pushImage 'nanaot/java-app:45.2'
       }
-    ]
+    }
   }
 }
