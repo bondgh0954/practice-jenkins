@@ -38,6 +38,17 @@ pipeline{
         }
       }
     }
+    stage('deploy application'){
+      steps{
+        script{
+          echo 'deploying the application to ec2 instance......'
+          def dockerCMD = "docker run -p 8080:8080 -d nanaot/java-app:$IMAGE_NAME"
+          sshagent(['my-server-key']) {
+              sh "ssh -o StrictHostKeyChecking=no ec2-user@18.199.159.129 $dockerCMD"
+          }
+        }
+      }
+    }
   }
 
 }
