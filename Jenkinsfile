@@ -16,12 +16,15 @@ pipeline{
         }
       }
     }
-  }
-  stage('building image'){
-    steps{
-      script{
-        buildImage 'nanaot/java-app:t1.1'
+    stage('building image'){
+      steps{
+        script{
+          buildImage 'nanaot/java-app:70.1'
+          dockerLogin()
+          pushImage 'nanaot/java-app:70.1'
+        }
       }
     }
   }
+
 }
