@@ -29,6 +29,7 @@ pipeline {
       steps{
         script{
           echo "authenticating and pushing image to private registry....."
+          echo "interesting application development......."
           withCredentials([usernamePassword(credentialsId: "docker-credentials", passwordVariable: "PASS", usernameVariable: "USER")]){
             sh 'echo $PASS | docker login -u $USER --password-stdin'
             sh 'docker push nanaot/java-app:r4'
